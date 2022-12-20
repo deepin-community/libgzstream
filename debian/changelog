@@ -1,0 +1,67 @@
+libgzstream (1.5+git20171107.9a20658-deepin1) unstable; urgency=medium
+
+  * Rebuild
+
+ -- Deepin Packages Builder <packages@deepin.org>  Mon, 14 Nov 2022 17:45:10 +0800
+
+libgzstream (1.5+git20171107.9a20658-1) unstable; urgency=medium
+
+  * Watchfile using mode=git
+  * Standards-Version: 4.6.0 (routine-update)
+  * Remove Section on libgzstream0 that duplicates source.
+  * Apply multi-arch hints.
+    + libgzstream-dev, libgzstream0: Add Multi-Arch: same.
+  * Make sure clean target will not fail
+  * Ignore upstream Makefile install since it does not respect $(PREFIX)
+
+ -- Andreas Tille <tille@debian.org>  Fri, 10 Sep 2021 09:23:29 +0200
+
+libgzstream (1.5+dfsg-5) unstable; urgency=medium
+
+  [ Edward Betts ]
+  * d/watch: fix incorrect github URL
+
+  [ Andreas Tille ]
+  * Standards-Version: 4.5.0 (routine-update)
+  * debhelper-compat 13 (routine-update)
+  * Remove trailing whitespace in debian/changelog (routine-update)
+  * Add salsa-ci file (routine-update)
+  * Rules-Requires-Root: no (routine-update)
+  * Use secure URI in Homepage field.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+ -- Andreas Tille <tille@debian.org>  Sun, 13 Sep 2020 07:07:28 +0200
+
+libgzstream (1.5+dfsg-4) unstable; urgency=medium
+
+  * Adapt symbols file to 32 bit architectures
+    Closes: #912286
+
+ -- Andreas Tille <tille@debian.org>  Tue, 30 Oct 2018 07:43:22 +0100
+
+libgzstream (1.5+dfsg-3) unstable; urgency=medium
+
+  * d/watch: Hopefully upstream will set release tags.
+  * debhelper 11
+  * Point Vcs fields to salsa.debian.org
+  * Standards-Version: 4.2.1
+  * Secure URI in copyright format
+  * Use --no-parallel
+  * hardening=+all
+  * Add symbols file
+
+ -- Andreas Tille <tille@debian.org>  Sun, 28 Oct 2018 22:49:47 +0100
+
+libgzstream (1.5+dfsg-2) unstable; urgency=medium
+
+  * Breaks+Replaces: libxdmf-dev (<< 2.1.dfsg.1-14)
+    Closes: #820024
+
+ -- Andreas Tille <tille@debian.org>  Mon, 04 Apr 2016 22:57:00 +0200
+
+libgzstream (1.5+dfsg-1) unstable; urgency=medium
+
+  * Initial release (Closes: #819532)
+
+ -- Andreas Tille <tille@debian.org>  Wed, 30 Mar 2016 15:17:11 +0200

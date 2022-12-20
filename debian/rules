@@ -1,0 +1,39 @@
+#!/usr/bin/make -f
+
+# DH_VERBOSE := 1
+
+# export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+# -->	g++    -o test_gzip test_gzip.o -fPIE -pie -Wl,-z,relro -Wl,-z,now -L. -lgzstream -lz
+#	/usr/bin/ld: test_gzip.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a shared object; recompile with -fPIC
+
+TMPLIBS=debian/tmplibs
+
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+
+%:
+	dh $@ --no-parallel
+
+override_dh_clean:
+	dh_clean
+	rm -rf $(TMPLIBS)
+
+override_dh_auto_clean:
+	dh_auto_clean || true # In clean stage the Makefile is not patched yet and thus might stumble upon removal of not existing files
+
+override_dh_auto_install:
+	echo 'Ignore upstream Makefile install since it does not respect $$(PREFIX)'
+
+override_dh_install:
+	mkdir -p $(TMPLIBS)
+	mv libgzstream.a   $(TMPLIBS)
+	mv libgzstream.so* $(TMPLIBS)
+	d-shlibmove --commit \
+		    --multiarch \
+		    --devunversioned \
+		    --exclude-la \
+		    --movedev *.h usr/include \
+		    debian/tmplibs/*.so
+
+get-orig-source:
+	wget -O ../gzstream.tgz http://www.cs.unc.edu/Research/compgeom/gzstream/gzstream.tgz
+	mk-origtargz --repack --compress xz gzstream.tgz

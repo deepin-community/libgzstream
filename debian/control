@@ -1,0 +1,40 @@
+Source: libgzstream
+Maintainer: Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>
+Uploaders: Andreas Tille <tille@debian.org>
+Section: libs
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               d-shlibs,
+               zlib1g-dev
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/med-team/libgzstream
+Vcs-Git: https://salsa.debian.org/med-team/libgzstream.git
+Homepage: https://www.cs.unc.edu/Research/compgeom/gzstream/
+Rules-Requires-Root: no
+
+Package: libgzstream0
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Multi-Arch: same
+Description: provide functionality of zlib C-library in a C++ iostream
+ Gzstream is a small C++ library, basically just a wrapper, that provides
+ the functionality of the zlib C-library in a C++ iostream.
+ .
+ This package contains the dynamic library.
+
+Package: libgzstream-dev
+Architecture: any
+Section: libdevel
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         libgzstream0 (= ${binary:Version})
+Breaks: libxdmf-dev (<< 2.1.dfsg.1-14)
+Replaces: libxdmf-dev (<< 2.1.dfsg.1-14)
+Multi-Arch: same
+Description: provide functionality of zlib C-library in a C++ iostream (development)
+ Gzstream is a small C++ library, basically just a wrapper, that provides
+ the functionality of the zlib C-library in a C++ iostream.
+ .
+ This package contains the static library and header files.
